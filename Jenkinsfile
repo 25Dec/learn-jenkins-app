@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image '${NODE_VERSION}'
+                    image "${NODE_VERSION}"
                     reuseNode true
                 }
             }
@@ -25,7 +25,7 @@ pipeline {
         stage('Deploy') {
             agent {
                 docker {
-                    image '${NODE_VERSION}'
+                    image "${NODE_VERSION}"
                     reuseNode true
                 }
             }
