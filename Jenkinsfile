@@ -3,13 +3,14 @@ pipeline {
 
     environment {
         SITE_ID = 'oX912312-aq232jsad-123123'
+        NODE_VERSION = 'node:18-alpine'
     }
 
     stages {
         stage('Build') {
             agent {
                 docker {
-                    image 'node'
+                    image $NODE_VERSION
                     reuseNode true
                 }
             }
@@ -24,7 +25,7 @@ pipeline {
         stage('Deploy') {
             agent {
                 docker {
-                    image 'node:18-alpine'
+                    image $NODE_VERSION
                     reuseNode true
                 }
             }
