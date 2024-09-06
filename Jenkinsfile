@@ -2,8 +2,9 @@ pipeline {
     agent any
 
     environment {
-        SITE_ID = 'oX912312-aq232jsad-123123'
-        NODE_VERSION = 'node:18-alpine'
+        NETLIFY_SITE_ID = "oX912312-aq232jsad-123123"
+        NETLIFY_TOKEN = credentials('netlify-token')
+        NODE_VERSION = "node:18-alpine"
     }
 
     stages {
@@ -32,7 +33,7 @@ pipeline {
             steps {
                 sh '''
                     npm i netlify-cli
-                    node_modules/.bin/netlify
+                    node_modules/.bin/netlify status
                     echo "Deploy to Site ID: $SITE_ID"
                 '''
             }
