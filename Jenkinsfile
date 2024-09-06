@@ -1,7 +1,9 @@
 pipeline {
     agent any
 
-    environment {}
+    environment {
+        SITE_ID = 'oX912312-aq232jsad-123123'
+    }
 
     stages {
         stage('Build') {
@@ -30,6 +32,7 @@ pipeline {
                 sh '''
                     npm i netlify-cli
                     node_modules/.bin/netlify
+                    echo "Deploy to Site ID: $SITE_ID"
                 '''
             }
         }
